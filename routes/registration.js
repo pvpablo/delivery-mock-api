@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const pool = require('../database.js');
 
-const INSERT_REGISTRY = `INSERT INTO REGISTRY (government_id) VALUES ($1)`
+const INSERT_REGISTRY = `INSERT INTO REGISTRATION (government_id) VALUES ($1)`
 
 router.post('/', function(req, res, next) {
   const government_id = req.body.government_id
@@ -14,6 +14,7 @@ router.post('/', function(req, res, next) {
       if (error) {
         res.status(500).send(error)
       }
+      console.log(result)
       res.status(201).send(`Registration successful: ${result.insertId}`)
   })
 })

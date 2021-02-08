@@ -9,7 +9,7 @@ CREATE TABLE CITIZEN (
 
 CREATE TABLE REGISTRATION (
     registration_id SERIAL,
-    government_id varchar(18),
+    government_id varchar(18) UNIQUE,
     FOREIGN KEY(government_id) REFERENCES CITIZEN(government_id),
-    PRIMARY KEY(registration_id, government_id) 
+    PRIMARY KEY(registration_id) 
 );
