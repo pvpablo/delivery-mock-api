@@ -13,9 +13,9 @@ router.post('/', function(req, res, next) {
   pool.query(INSERT_REGISTRY, [government_id], (error, result) => {
       if (error) {
         res.status(500).send(error)
+      } else {
+        res.status(201).send(`Registration successful: ${result.insertId}`)
       }
-      console.log(result)
-      res.status(201).send(`Registration successful: ${result.insertId}`)
   })
 })
 
