@@ -1,1 +1,1 @@
-# covid-vaccine-registration-api
+# delivery-mock-api
