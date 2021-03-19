@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var citizenRouter = require('./routes/citizen');
 var registrationRouter = require('./routes/registration');
+var shipmentRouter = require('./routes/shipment');
 
 var app = express();
 
@@ -15,8 +16,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/citizens', citizenRouter)
+app.use('/citizen', citizenRouter)
 app.use('/registration', registrationRouter)
+app.use('/shipment', shipmentRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,6 +4,7 @@ const pool = require('../database.js');
 
 const INSERT_CITIZEN = `INSERT INTO CITIZEN (government_id, firstname, lastname, birthdate, biological_sex, nationality) 
   VALUES ($1, $2, $3, $4, $5 $6)`
+const GET_CITIZENS = `SELECT * FROM CITIZEN`
 
 router.post('/', function(req, res, next) {
   // Generate a new random ID to insert in the DB. 
@@ -21,6 +22,15 @@ router.post('/', function(req, res, next) {
         res.status(500).send(error)
       }
       res.status(201).send(`Citizen added with ID: ${result.insertId}`)
+  })
+})
+
+router.get('/', function(req, res, next) {
+  pool.query(GET_CITIZENS, (error, results) => {
+    if (error) {
+      throw error
+    }
+    res.status(200).send(results.rows)
   })
 })
 
